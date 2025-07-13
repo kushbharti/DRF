@@ -4,8 +4,6 @@ from rest_framework import mixins
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.throttling import ScopedRateThrottle
 
-# Create your views here.
-
 # Mixins
 
 """
