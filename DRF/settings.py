@@ -129,4 +129,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'SEARCH_PARAM': 'q',
+    'DEFAULT_THROTTLE_RATES':{
+        'anon' : '20/day',
+        'user' : '20/hour',
+        'user_requests_limit' : '5/minute',
+    },
+    
+    
 }
