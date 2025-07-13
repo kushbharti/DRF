@@ -1,7 +1,8 @@
 from .serializers import EmployeesSerializer
 from .models import Employees
-from rest_framework import mixins,generics
-from rest_framework import viewsets
+from rest_framework import mixins
+from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework.throttling import ScopedRateThrottle
 
 # Create your views here.
 
@@ -31,26 +32,19 @@ class EmployeeDetail(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.De
     
     def delete(self,request,pk):
         return self.destroy(request,pk)
-        
+       
 """
-
 
 # Generics
 
-"""
-
-class Employee(generics.ListCreateAPIView):
+class Emps(ListCreateAPIView):
     queryset = Employees.objects.all()
     serializer_class = EmployeesSerializer
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = 'emps'
     
-class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
+class Emps_(RetrieveUpdateDestroyAPIView):
     queryset = Employees.objects.all()
     serializer_class = EmployeesSerializer
-    lookup_field ='pk'
-    
-"""
-
-class EmployeeViewset(viewsets.ModelViewSet):
-    queryset = Employees.objects.all()
-    serializer_class = EmployeesSerializer
-    
+    throttle_classes =[ScopedRateThrottle]
+    throttle_scope = 'emps_'

@@ -133,6 +133,8 @@ REST_FRAMEWORK = {
         'anon' : '20/day',
         'user' : '20/hour',
         'user_requests_limit' : '5/minute',
+        'emps' : '3/minute',
+        'emps_' : '1/minute',
     },
     
     
